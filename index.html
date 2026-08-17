@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            text-align: center;
+            background-color: #f3e5f5;
+            margin: 0;
+            padding-top: 30px;
+            font-family: sans-serif;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .gif-container {
+            width: 300px;
+            height: 280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        img {
+            width: auto;
+            height: 100%;
+            max-width: 100%;
+            border-radius: 15px;
+            object-fit: contain;
+        }
+
+        button {
+            border: none;
+            padding: 15px 40px;
+            border-radius: 20px;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #evet {
+            background-color: #9c27b0;
+            color: white;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 10;
+        }
+
+        #hayir {
+            background-color: #9c27b0;
+            color: white;
+        }
+    </style>
+
+    <style>
+        @media (max-width: 768px) {
+            body {
+                padding-top: 15px !important;
+                overflow: hidden !important;
+                height: 100vh !important;
+            }
+
+            .gif-container {
+                width: 250px !important;
+                height: 230px !important;
+            }
+
+            h1 {
+                font-size: 22px !important;
+                margin: 8px 0 !important;
+            }
+
+            p {
+                font-size: 15px !important;
+                margin: 5px 0 !important;
+            }
+
+            button {
+                padding: 12px 30px !important;
+                font-size: 16px !important;
+                margin: 5px !important;
+            }
+
+            br {
+                display: none;
+            }
+        }
+    </style>
+
+	<script src="https://pl29404834.effectivecpmnetwork.com/22/68/98/22689886ad5fab2b03fa69831e7961f7.js"></script>
+
+</head>
+
+<body>
+
+    <div class="gif-container">
+        <img id="anaResim" src="https://www.image2url.com/r2/default/gifs/1786923698306-fbbe60ab-06c6-4296-91cb-0aa990bbf7d5.gif">
+    </div>
+
+    <h1 id="anaBaslik">Kahve içelim mi? ☕</h1>
+    <p id="altYazi">tabii istersen</p>
+
+    <br><br>
+    <button id="evet">evet</button>
+    <button id="hayir">hayir</button>
+
+    <script>
+        // Değişkenleri Tanımlıyoruz
+        let hayirButonu = document.getElementById("hayir");
+        let evetButonu = document.getElementById("evet");
+        let resim = document.getElementById("anaResim");
+        let baslik = document.getElementById("anaBaslik");
+        let altYazi = document.getElementById("altYazi");
+
+        let tiklamaSayisi = 0;
+        let evetBoyutu = 1; // Evet butonunun başlangıç boyutu (Çarpan)
+
+        // Hayır Butonu İşlemleri
+        hayirButonu.addEventListener("click", function () {
+            tiklamaSayisi = tiklamaSayisi + 1;
+
+            // EVET BUTONUNU DEVLEŞTİRME SİHRİ
+            evetBoyutu = evetBoyutu + 0.8; // Her tıkta %80 daha büyür
+            evetButonu.style.transform = "scale(" + evetBoyutu + ")";
+
+            if (tiklamaSayisi == 1) {
+                resim.src = "https://www.image2url.com/r2/default/gifs/1786923698306-fbbe60ab-06c6-4296-91cb-0aa990bbf7d5.gif";
+                baslik.innerHTML = "Emin misin?";
+                altYazi.innerHTML = "sadece emin olmak istedim";
+            }
+
+            if (tiklamaSayisi == 2) {
+                resim.src = "https://www.image2url.com/r2/default/gifs/1786923928214-8794a2a5-78a5-4a1f-954e-f73e94d5fd84.gif";
+                baslik.innerHTML = "Gerçekten mi?";
+                altYazi.innerHTML = "bir kahveden zarar gelmezdi";
+            }
+
+            if (tiklamaSayisi >= 3) {
+                resim.src = "https://www.image2url.com/r2/default/gifs/1786923928214-8794a2a5-78a5-4a1f-954e-f73e94d5fd84.gif";
+                baslik.innerHTML = "Peki şimdi bas da görelim";
+                altYazi.innerHTML = "Sanırım evete basman gerekiyor";
+
+                // İstersen 3. tıktan sonra hayır butonunu tamamen yok edebiliriz:
+                // hayirButonu.style.display = "none"; 
+            }
+        });
+
+        // Evet Butonu İşlemleri
+        evetButonu.addEventListener("click", function () {
+            resim.src = "https://www.image2url.com/r2/default/gifs/1786923987246-a92dc4fb-7beb-48ed-8b95-8c430c60baca.gif";
+            baslik.innerHTML = "super artık detayları konuşabiliriz";
+            altYazi.innerHTML = "Kahveler benden!";
+
+            // Butonları gizle (Eski boyutuna döndürüp saklıyoruz)
+            evetButonu.style.transform = "scale(1)";
+            evetButonu.style.display = "none";
+            hayirButonu.style.display = "none";
+        });
+    </script>
+
+
+</body>
+
+</html>
